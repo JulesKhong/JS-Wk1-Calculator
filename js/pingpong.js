@@ -1,4 +1,8 @@
-function pingPong(goal) {
+function Calculator(skinName) {
+  this.skin = skinName;
+}
+
+Calculator.prototype.pingPong = function(goal) {
   var output = [];
   for (var i = 1; i<=goal; i++) {
     if (i% 15 === 0) {
@@ -12,15 +16,23 @@ function pingPong(goal) {
     }
   }
   return output;
-}
+};
 
-$(document).ready(function() {
-  $('#ping-pong-form').submit(function(event) {
-    event.preventDefault();
-    var goal = $('#goal').val();
-    var output = pinpong(goal);
-    output.forEach(function(element) {
-      $('#solution').append("<li>" + element + "</li>");
-    });
-  });
-}) ;
+Calculator.prototype.addition = function(number1, number2){
+  return number1 + number2;
+};
+Calculator.prototype.subtraction = function(number1, number2){
+  return number1 - number2;
+};
+Calculator.prototype.multiplication = function(number1, number2){
+  return number1 * number2;
+};
+Calculator.prototype.division = function(number1, number2){
+  return number1 / number2;
+};
+
+
+
+
+// creating a new property called calculatorModule equal to Calculator constructor function
+exports.calculatorModule = Calculator;
